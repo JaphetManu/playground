@@ -11,14 +11,19 @@ body {
 	scroll-behavior: smooth;
 	font-family: chivo-mono;
 	background-color: #ffffff;
-	background-image: radial-gradient(#c3c3c3 0.5px, transparent 0.5px), radial-gradient(#c3c3c3 0.5px, #ffffff 0.5px);
+	background-image: radial-gradient(#c3c3c3 0.5px, transparent 0.5px),
+		radial-gradient(#c3c3c3 0.5px, #ffffff 0.5px);
 	background-size: 20px 20px;
 	background-position: 0 0, 10px 10px;
 }
 
-.test {
-	font-size: 4rem;
-	font-weight: 300;
+.title {
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	transform: translate(50%, -50%);
+	font-size: 5rem;
+	font-weight: 500;
 }
 
 #gallery {
@@ -34,8 +39,9 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #000;
-	transition: transform 0.3s ease;
+	transition: transform 1s ease, width 1s ease, height 1s ease, top 1s ease,
+		left 1s ease, right 1s ease, bottom 1s ease;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .shape > .description {
@@ -49,14 +55,32 @@ body {
 	border-radius: 1rem;
 	opacity: 1;
 	transition: opacity 0.3s ease-in-out;
+	overflow: hidden;
 }
 
-.shape:hover {
+.shape > .shape-title {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	color: #fff;
+	transform: translateX(100%);
+	visibility: hidden;
+	transition: transform 0.3s ease-in-out;
+	font-size: 2rem;
+}
+
+.shape:hover > .shape-title {
+	transform: translateX(-20%);
+	visibility: visible;
+}
+
+.shape:not(.expanded):hover {
+	cursor: pointer;
 	transform: scale(1.1);
 }
 
 .shape:hover > .background {
-	opacity: 0.4;
+	opacity: 0.3;
 }
 
 .shape:nth-child(1) {
@@ -64,20 +88,28 @@ body {
 	height: 320px;
 	top: 20%;
 	left: 10%;
+	background-color: #264653;
 }
 
 .shape:nth-child(2) {
 	width: 12rem;
 	height: 9rem;
 	background: green;
-	bottom: 20%;
-	right: 30%;
+	top: 70%;
+	left: 70%;
 }
 
 .shape:nth-child(3) {
 	width: 14rem;
 	height: 14rem;
 	background: blue;
-	bottom: 10%;
+	top: 70%;
 	left: 20%;
+}
+
+.shape.expanded {
+	width: 90vw;
+	height: 90vh;
+	top: 5vh;
+	left: 5vw;
 }
