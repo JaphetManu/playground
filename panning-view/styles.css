@@ -1,0 +1,83 @@
+@font-face {
+	font-family: chivo-mono;
+	src: url(assets/ChivoMono-VariableFont_wght.ttf);
+}
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	overflow: hidden;
+	height: 100vh;
+	scroll-behavior: smooth;
+	font-family: chivo-mono;
+	background-color: #ffffff;
+	background-image: radial-gradient(#c3c3c3 0.5px, transparent 0.5px), radial-gradient(#c3c3c3 0.5px, #ffffff 0.5px);
+	background-size: 20px 20px;
+	background-position: 0 0, 10px 10px;
+}
+
+.test {
+	font-size: 4rem;
+	font-weight: 300;
+}
+
+#gallery {
+	width: 150vw;
+	height: 150vh;
+	position: absolute;
+	will-change: transform;
+}
+
+.shape {
+	position: absolute;
+	border-radius: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+	transition: transform 0.3s ease;
+}
+
+.shape > .description {
+	opacity: 0;
+}
+
+.shape > .background {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 1rem;
+	opacity: 1;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.shape:hover {
+	transform: scale(1.1);
+}
+
+.shape:hover > .background {
+	opacity: 0.4;
+}
+
+.shape:nth-child(1) {
+	width: 400px;
+	height: 320px;
+	top: 20%;
+	left: 10%;
+}
+
+.shape:nth-child(2) {
+	width: 12rem;
+	height: 9rem;
+	background: green;
+	bottom: 20%;
+	right: 30%;
+}
+
+.shape:nth-child(3) {
+	width: 14rem;
+	height: 14rem;
+	background: blue;
+	bottom: 10%;
+	left: 20%;
+}
