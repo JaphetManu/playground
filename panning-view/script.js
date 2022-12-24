@@ -2,26 +2,6 @@ const gallery = document.getElementById('gallery');
 const shapes = document.querySelectorAll('.shape');
 let panelExpanded = false;
 
-shapes.forEach((shape) => {
-	shape.addEventListener('click', () => {
-		panelExpanded = true;
-		shape.classList.add('expanded');
-
-		gallery.animate(
-			{
-				transform: `translate(${shape.offsetWidth - shape.clientWidth}px, ${
-					shape.offsetHeight - shape.clientHeight
-				}px)`,
-			},
-			{
-				duration: 1000,
-				fill: 'forwards',
-				easing: 'ease',
-			}
-		);
-	});
-});
-
 window.onmousemove = (e) => {
 	if (!panelExpanded) {
 		const mouseX = e.clientX;
@@ -48,3 +28,31 @@ window.onmousemove = (e) => {
 		);
 	}
 };
+
+shapes.forEach((shape) => {
+	shape.addEventListener('click', (e) => {
+		panelExpanded = true;
+		console.log('listener 1');
+		console.log(panelExpanded);
+		shape.classList.add('expanded');
+
+		gallery.animate(
+			{
+				transform: `translate(${shape.offsetWidth - shape.clientWidth}px, ${
+					shape.offsetHeight - shape.clientHeight
+				}px)`,
+			},
+			{
+				duration: 1000,
+				fill: 'forwards',
+				easing: 'ease',
+			}
+		);
+
+		shape.querySelector('.close-icon').addEventListener('click', (e) => {
+			e.stopPropagation();
+			shape.classList.remove('expanded');
+			setTimeout(() => (panelExpanded = false), 800);
+		});
+	});
+});
