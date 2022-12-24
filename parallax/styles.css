@@ -1,0 +1,30 @@
+body {
+	margin: 0;
+	box-sizing: border-box;
+	height: 300vh;
+	width: 100vw;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+}
+
+.parallax-right {
+	width: max-content;
+	position: absolute;
+	top: calc(150vh - 144px);
+	transform: translateY(-100%);
+	left: -20%;
+	text-transform: uppercase;
+	font-size: 10rem;
+	line-height: 0.9;
+}
+
+.parallax-left {
+	width: max-content;
+	position: absolute;
+	top: 150vh;
+	transform: translateY(-100%);
+	left: -80%;
+	text-transform: uppercase;
+	font-size: 10rem;
+	line-height: 0.9;
+}
