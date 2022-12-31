@@ -34,7 +34,7 @@ body {
 
 .shape {
 	position: absolute;
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -107,9 +107,22 @@ body {
 .shape.expanded {
 	width: 90vw;
 	height: 90vh;
-	top: 5vh;
-	left: 5vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	z-index: 10;
+}
+
+.shape.expanded > .shape-title {
+	display: none;
+}
+
+.shape.expanded > .background {
+	opacity: 0.5;
+}
+
+.shape.expanded:hover > .background {
+	opacity: 0.5;
 }
 
 .shape > .close-icon {
@@ -124,11 +137,37 @@ body {
 	cursor: pointer;
 	transition: opacity 0.3s ease-in-out;
 	pointer-events: none;
+	z-index: 20;
 }
 
 .shape.expanded > .close-icon {
 	pointer-events: all;
 	visibility: visible;
 	opacity: 1;
+	transition-delay: 1s;
+}
+
+.shape-body {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	height: 80%;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+}
+
+.shape-body > .headline {
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 700;
+	opacity: 0;
+	transform: translateX(-10%);
+	transition: opacity 0.4s ease, transform 0.4s ease-in-out;
+}
+
+.shape-body[data-visible='true'] > .headline {
+	opacity: 0.8;
+	transform: translateX(0%);
 	transition-delay: 1s;
 }

@@ -32,27 +32,29 @@ window.onmousemove = (e) => {
 shapes.forEach((shape) => {
 	shape.addEventListener('click', (e) => {
 		panelExpanded = true;
-		console.log('listener 1');
-		console.log(panelExpanded);
 		shape.classList.add('expanded');
 
 		gallery.animate(
 			{
-				transform: `translate(${shape.offsetWidth - shape.clientWidth}px, ${
-					shape.offsetHeight - shape.clientHeight
+				transform: `translate(${gallery.getBoundingClientRect().width / 2 - window.innerWidth}px, ${
+					gallery.getBoundingClientRect().height / 2 - window.innerHeight
 				}px)`,
 			},
 			{
 				duration: 1000,
 				fill: 'forwards',
 				easing: 'ease',
+				delay: 250,
 			}
 		);
 
 		shape.querySelector('.close-icon').addEventListener('click', (e) => {
 			e.stopPropagation();
+			shape.querySelector('.shape-body').dataset.visible = false;
 			shape.classList.remove('expanded');
 			setTimeout(() => (panelExpanded = false), 800);
 		});
+
+		shape.querySelector('.shape-body').dataset.visible = true;
 	});
 });
